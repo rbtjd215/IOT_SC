@@ -1,0 +1,24 @@
+/* Restore the original text entrance, using opacity without moving the layout.
+   Containers with their own assembly/sequence motion are not faded twice. */
+#deck>.slide.active>.content{animation:none!important;opacity:1;transform:none}
+.entry-fade{opacity:1;transform:none}
+#deck>.slide.active>header>.eyebrow{animation:text-entrance .42s 0s ease-out both}
+#deck>.slide.active>header>h1{animation:text-entrance .65s .06s ease-out both}
+#deck>.slide.active>header>.lead{animation:text-entrance .62s .16s ease-out both}
+#deck>.slide.active .entry-fade{animation:text-entrance .68s var(--fade-delay,.22s) ease-out both}
+@keyframes text-entrance{from{opacity:0}to{opacity:1}}
+
+/* M turns every entrance into its complete readable state immediately. */
+.motion-paused #deck>.slide.active>header>.eyebrow,
+.motion-paused #deck>.slide.active>header>h1,
+.motion-paused #deck>.slide.active>header>.lead,
+.motion-paused #deck>.slide.active .entry-fade{animation:none!important;opacity:1!important;transform:none!important}
+.overview-thumb .entry-fade{animation:none!important;opacity:1!important;transform:none!important}
+@media(prefers-reduced-motion:reduce){
+  #deck>.slide.active>header>.eyebrow,#deck>.slide.active>header>h1,
+  #deck>.slide.active>header>.lead,#deck>.slide.active .entry-fade{animation:none!important;opacity:1!important;transform:none!important}
+}
+@media print{
+  #deck>.slide>header>.eyebrow,#deck>.slide>header>h1,
+  #deck>.slide>header>.lead,#deck>.slide .entry-fade{animation:none!important;opacity:1!important;transform:none!important}
+}
